@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voitures - GTA Shop</title>
+    <link rel="icon" type="image/jpg" href="images/logo GTA.jpg">
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #2a2a2a, #1c1c1c);
+    color: #fff;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #000;
+    border-bottom: 3px solid #ff0000;
+}
+
+.filters {
+    font-weight: bold;
+    margin: 20px;
+    text-align: center;
+}
+
+.filters select {
+    font-weight: bold;
+    padding: 10px;
+    margin: 0 10px;
+    border: 2px solid #444;
+    background: #222;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.filters button {
+    padding: 10px 20px;
+    background: #ffffff;
+    border: none;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filters button:hover {
+    background: #cc0000;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.item-card {
+            background-color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            max-width: 300px; /* Limit the card width */
+            margin: 10px auto; /* Center single card */
+            display: inline-block; /* Align multiple cards nicely */
+        }
+        .item-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+        }
+        .item-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .item-card .info {
+            padding: 15px;
+            text-align: center;
+        }
+        .item-card button {
+        padding: 10px 20px;
+        background: #ffffff;
+        border: none;
+        color: rgb(0, 0, 0);
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .item-card button:hover {
+        transform: scale(1.1);
+    }
+    footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #000;
+            border-top: 3px solid #ff0000;
+        }
+        footer p {
+            margin: 0;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/gta_logo.jpg">
+        
+    </header>
+<nav>
+    
+    <div class="filters">
+        
+        <label for="filtre-vitesse">Vitesse :</label>
+        <select id="filtre-vitesse">
+            <option value="all">km/h</option>
+            <option value="fast">+250 km/h</option>
+            <option value="medium">175-250 km/h</option>
+            <option value="slow">-175km/h</option>
+        </select>
+    
+        <label for="filtre-prix">Prix :</label>
+        <select id="filtre-prix">
+            <option value="all">GTA$</option>
+            <option value="low">500k et moins</option>
+            <option value="medium">500-1M</option>
+            <option value="high">1M et plus</option>
+        </select>
+    
+        <label for="filtre-capacité">Capacité :</label>
+        <select id="filtre-capacité">
+            <option value="all">Nombre de places</option>
+            <option value="low">2 places</option>
+            <option value="medium">2-5 places</option>
+            <option value="high">Plus de 5</option>
+        </select>
+    
+        <label for="filtre-annee">Année de sortie :</label>
+        <select id="filtre-annee">
+            <option value="all">Toutes</option>
+            <option value="old">Ancienne</option>
+            <option value="recent">Récente</option>
+        </select>
+    
+        <label for="filtre-categorie">Catégorie :</label>
+        <select id="filtre-categorie">
+            <option value="all">Type</option>
+            <option value="Supersportive">Supersportive</option>
+            <option value="Sport">Sport</option>
+            <option value="Tout-terrain">Tout-terrain</option>
+            <option value="Ultralégères">Ultralégères</option>
+        </select>
+    
+        <button id="apply-filters">Appliquer</button>
+        <button id="reset-filters">Réinitialiser</button>
+        <button id="Accueil" onclick="window.location.href='index.html'">Accueil</button>
+        
+    </div>
+</nav>    
+
+    <section class="container" id="vehicles-container">
+        
+    </section>
+
+    <footer>
+        <p>&copy; 2024 GTA Shop. Hugo Troussel / Léo Lesage</p>
+    </footer>
+    <script>
+    document.getElementById('reset-filters').addEventListener('click', () => {
+        document.getElementById('filtre-vitesse').value = 'all';
+        document.getElementById('filtre-prix').value = 'all';
+        document.getElementById('filtre-capacité').value = 'all';
+        document.getElementById('filtre-annee').value = 'all';
+        document.getElementById('filtre-categorie').value = 'all';
+        document.getElementById('apply-filters').click();
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('apply-filters').click();
+    });
+    document.getElementById('apply-filters').addEventListener('click', async () => {
+        const type = "Voiture";
+        const vitesse = document.getElementById('filtre-vitesse').value;
+        const prix = document.getElementById('filtre-prix').value;
+        const capacite = document.getElementById('filtre-capacité').value;  
+        const annee = document.getElementById('filtre-annee').value;  
+        const categorie = document.getElementById('filtre-categorie').value;  
+    
+        let query = `search.php?type=${type}`;
+        if (vitesse !== 'all') query += `&vitesse=${vitesse}`;
+        if (prix !== 'all') query += `&prix=${prix}`;
+        if (capacite !== 'all') query += `&capacite=${capacite}`; 
+        if (annee !== 'all') query += `&annee=${annee}`;  
+        if (categorie !== 'all') query += `&categorie=${categorie}`;  
+    
+        const response = await fetch(query);
+        const vehicles = await response.json();
+    
+        const container = document.getElementById('vehicles-container');
+        container.innerHTML = '';
+    
+        if (vehicles.length === 0) {
+            container.innerHTML = '<p>Aucun véhicule trouvé.</p>';
+        } else {
+            vehicles.forEach(vehicle => {
+                container.innerHTML += `
+                    <div class="item-card">
+                        <img src="images/${vehicle.image}" alt="${vehicle.name}">
+                        <div class="info">
+                            <h3>${vehicle.name}</h3>
+                            <p>Catégorie : ${vehicle.categorie}</p>
+                            <p>Vitesse max: ${vehicle.vitesse}km/h</p>
+                            <p>Prix : ${vehicle.prix} GTA$</p>
+                            <p>Année de sortie : ${vehicle.annee}</p>  
+                            <p>Capacité : ${vehicle.capacite} places</p> 
+                            <button>Acheter</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+    });
+    
+    </script>
+</body>
+</html>
