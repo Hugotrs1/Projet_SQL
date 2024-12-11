@@ -6,111 +6,101 @@
     <title>Avions - GTA Shop</title>
     <link rel="icon" type="image/jpg" href="images/logo GTA.jpg">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #2a2a2a, #1c1c1c);
-            color: #fff;
-        }
-        
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: #000;
-            border-bottom: 3px solid #ff0000;
-        }
-        
-        .filters {
-            font-weight: bold;
-            margin: 20px;
-            text-align: center;
-        }
-        
-        .filters select {
-            font-weight: bold;
-            padding: 10px;
-            margin: 0 10px;
-            border: 2px solid #444;
-            background: #222;
-            color: #fff;
-            border-radius: 5px;
-        }
-        
-        .filters button {
-            padding: 10px 20px;
-            background: #ffffff;
-            border: none;
-            color: rgb(0, 0, 0);
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        .filters button:hover {
-            background: #cc0000;
-        }
-        
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-        
-        .item-card {
-                    background-color: #333;
-                    border-radius: 10px;
-                    overflow: hidden;
-                    transition: transform 0.3s, box-shadow 0.3s;
-                    max-width: 300px; /* Limit the card width */
-                    margin: 10px auto; /* Center single card */
-                    display: inline-block; /* Align multiple cards nicely */
-                }
-                .item-card:hover {
-                    transform: scale(1.05);
-                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-                }
-                .item-card img {
-                    width: 100%;
-                    height: 150px;
-                    object-fit: cover;
-                }
-                .item-card .info {
-                    padding: 15px;
-                    text-align: center;
-                }
-                .item-card button {
-                padding: 10px 20px;
-                background: #ffffff;
-                border: none;
-                color: rgb(0, 0, 0);
-                border-radius: 5px;
-                cursor: pointer;
-                transition: background-color 0.3s, transform 0.3s;
-            }
-        
-            .item-card button:hover {
-                transform: scale(1.1);
-            }
-            footer {
-                    text-align: center;
-                    padding: 20px;
-                    background-color: #000;
-                    border-top: 3px solid #ff0000;
-                }
-                footer p {
-                    margin: 0;
-                    color: #fff;
-                    font-size: 0.9rem;
-                }
-                
-            </style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #2a2a2a, #1c1c1c);
+        color: #fff;
+    }
+    header {
+        text-align: center;
+        padding: 20px;
+        background-color: #000;
+        border-bottom: 3px solid #ff0000;
+    }
+    .filters {
+        font-weight: bold;
+        margin: 20px;
+        text-align: center;
+    }
+    .filters select {
+        font-weight: bold;
+        padding: 10px;
+        margin: 0 10px;
+        border: 2px solid #444;
+        background: #222;
+        color: #fff;
+        border-radius: 5px;
+    }
+    .filters button {
+        padding: 10px 20px;
+        background: #ffffff;
+        border: none;
+        color: rgb(0, 0, 0);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .filters button:hover {
+        background: #cc0000;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+    .item-card {
+        background-color: #333;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+        max-width: 300px; 
+        margin: 10px auto; 
+        display: inline-block; 
+    }
+    .item-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    }
+    .item-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
+    .item-card .info {
+        padding: 15px;
+        text-align: center;
+    }
+    .item-card button {
+        padding: 10px 20px;
+        background: #ffffff;
+        border: none;
+        color: rgb(0, 0, 0);
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+    .item-card button:hover {
+        transform: scale(1.1);
+    }
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #000;
+        border-top: 3px solid #ff0000;
+    }
+    footer p {
+        margin: 0;
+        color: #fff;
+        font-size: 0.9rem;
+    }
+    </style>
 </head>
 <body>
     <header>
         <img src="images/gta_logo.jpg">
     </header>
-
     <nav>
         <div class="filters">
             <label for="filtre-prix">Prix :</label>
@@ -149,14 +139,11 @@
             <button id="Accueil" onclick="window.location.href='index.html'">Accueil</button>
         </div>
     </nav>    
-    
-        <section class="container" id="vehicles-container">
-            
-        </section>
-    
-        <footer>
-            <p>&copy; 2024 GTA Shop. Hugo Troussel / Léo Lesage</p>
-        </footer>
+    <section class="container" id="vehicles-container">
+    </section>
+    <footer>
+        <p>&copy; 2024 GTA Shop. Hugo Troussel / Léo Lesage</p>
+    </footer>
         <script>
             document.getElementById('reset-filters').addEventListener('click', () => {
                 document.getElementById('filtre-prix').value = 'all';
@@ -209,6 +196,6 @@
                 }
             });
             
-            </script>
+        </script>
 </body>
 </html>
