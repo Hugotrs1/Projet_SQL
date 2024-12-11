@@ -2,29 +2,25 @@
 require_once "./includes/db.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $vehicleId = $_POST['vehicle_id'];
+    $name = $_POST['name'];
+    $type = $_POST['type'];
+    $vitesse = $_POST['vitesse'];
+    $prix = $_POST['prix'];
+    $capacite = $_POST['capacite']; 
+    $annee = $_POST['annee'];
+    $categorie = $_POST['categorie']; 
+    $image = $_FILES['image']['name'];
 
-    $stmt = $pdo->prepare("SELECT image FROM vehicles WHERE id = ?");
-    $stmt->execute([$vehicleId]);
-    $vehicle = $stmt->fetch(PDO::FETCH_ASSOC);
+    $uploadDir = "images/";
+    $uploadFile = $uploadDir . basename($image);
+    move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile);
 
-    if ($vehicle) {
-        $filePath = "images/" . $vehicle['image'];
-        if (file_exists($filePath)) {
-            unlink($filePath);
-        }
+    $stmt = $pdo->prepare("INSERT INTO vehicles (type, name, vitesse, prix, capacite, annee, categorie, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$type, $name, $vitesse, $prix, $capacite, $annee, $categorie, $image]);
 
-        $stmt = $pdo->prepare("DELETE FROM vehicles WHERE id = ?");
-        $stmt->execute([$vehicleId]);
-
-        $message = "Véhicule supprimé avec succès !";
-    } else {
-        $message = "Véhicule introuvable !";
-    }
+    echo "<p>Véhicule ajouté avec succès !</p>";
 }
 
-$stmt = $pdo->query("SELECT * FROM vehicles ORDER BY type");
-$vehicles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -32,99 +28,112 @@ $vehicles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gérer les véhicules</title>
+    <title>Ajouter un véhicule</title>
     <link rel="icon" type="image/jpg" href="images/logo GTA.jpg">
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-        background: linear-gradient(135deg, #2a2a2a, #1c1c1c);
-        color: #fff;
-    }
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-    }
-    .vehicle-card {
-        background: #222;
-        padding: 20px;
-        border-radius: 10px;
-        border: 2px solid #444;
-        text-align: center;
-    }
-    .vehicle-card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-    }
-    .vehicle-card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 10px;
-        margin-bottom: 15px;
-    }
-    .vehicle-card h3 {
-        margin: 10px 0;
-        color: #ff4500;
-    }
-    .vehicle-card p {
-        margin: 5px 0;
-    }
-    .vehicle-card form {
-        margin-top: 15px;
-    }
-    .vehicle-card button {
-        background: #ff4500;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1rem;
-        transform: scale(1.1);
-    }
-    .vehicle-card button:hover {
-        background: #ff0000;
-    }
-    .message {
-        text-align: center;
-        margin-bottom: 20px;
-        padding: 10px;
-        background: #333;
-        border-radius: 5px;
-        color: #ff4500;
-    }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #2a2a2a, #1c1c1c);
+    color: #fff;
+}
+
+form {
+    background: #222; 
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 2px solid #444;
+    
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: white;
+}
+form input,
+form select{
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #444;
+    border-radius: 10px;
+    background: #2a2a2a;
+    color: #fff;
+    font-size: 1rem;
+    transition: border 0.9s; 
+
+}
+form input{
+    width: 95%;   
+}
+form select {
+    width: 100%;
+}
+
+form button {
+    background: #ffffff; 
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    font-size: 1rem;
+    
+    transition: background 0.5s, transform 0.5s;
+}
+
+form button:hover {
+    transform: scale(1.1);
+}
     </style>
 </head>
 <body>
-    <h1 style="text-align:center;">Gérer les véhicules</h1>
+    <h1 style="text-align:center;">Ajouter un véhicule</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        <label>Nom :</label>
+        <input type="text" name="name" required>
 
-    <?php if (isset($message)): ?>
-        <div class="message"><?= htmlspecialchars($message) ?></div>
-    <?php endif; ?>
+        <label>Type :</label>
+        <select name="type" required>
+            <option value="Voiture">Voiture</option>
+            <option value="Avion">Avion</option>
+            <option value="Bateau">Bateau</option>
+        </select>
 
-    <div class="container">
-        <?php foreach ($vehicles as $vehicle): ?>
-            <div class="vehicle-card">
-                <img src="images/<?= htmlspecialchars($vehicle['image']) ?>" alt="<?= htmlspecialchars($vehicle['name']) ?>">
-                <h3><?= htmlspecialchars($vehicle['name']) ?></h3>
-                <p>Type : <?= htmlspecialchars($vehicle['type']) ?></p>
-                <p>Vitesse : <?= htmlspecialchars($vehicle['vitesse']) ?> km/h</p>
-                <p>Prix : <?= htmlspecialchars($vehicle['prix']) ?> GTA$</p>
-                <p>Capacité : <?= htmlspecialchars($vehicle['capacite']) ?> places</p>
-                <p>Année : <?= htmlspecialchars($vehicle['annee']) ?></p>
-                <p>Catégorie : <?= htmlspecialchars($vehicle['categorie']) ?></p>
+        <label>Vitesse maximale :</label>
+        <input type="number" name="vitesse" required>
 
-                <form action="" method="post">
-                    <input type="hidden" name="vehicle_id" value="<?= htmlspecialchars($vehicle['id']) ?>">
-                    <button type="submit">Supprimer</button>
-                </form>
-            </div>
-        <?php endforeach; ?>
-    </div>
+        <label>Prix :</label>
+        <input type="number" name="prix" required>
+
+        <label>Capacité :</label>
+        <input type="number" name="capacite" required>
+
+        <label>Année de sortie :</label>
+        <input type="number" name="annee" required> 
+
+        <label>Catégorie :</label>
+        <select name="categorie" required>
+            <option value="Avion de chasse">Avion de chasse</option>
+            <option value="Avion privé">Avion privé</option>
+            <option value="Avion de voltige">Avion de voltige</option>
+            <option value="Bateau léger">Bateau léger</option>
+            <option value="Sous-marin">Sous-marin</option>
+            <option value="Bateau de luxe">Bateau de luxe</option>
+            <option value="Supersportive">Supersportive</option>
+            <option value="Tout-terrain">Tout-terrain</option>
+            <option value="Sport">Sport</option>
+            <option value="Ultralégères">Ultralégères</option>
+        </select>
+
+        <label>Image :</label>
+        <input type="file" name="image" accept="image/*" required>
+
+        <button type="submit">Ajouter</button>
+    </form>
 </body>
 </html>
