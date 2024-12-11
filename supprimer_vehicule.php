@@ -33,80 +33,71 @@ $vehicles = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gérer les véhicules</title>
+    <link rel="icon" type="image/jpg" href="images/logo GTA.jpg">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #2a2a2a, #1c1c1c);
-            color: #fff;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .vehicle-card {
-            background: #222;
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid #444;
-            text-align: center;
-        }
-        .vehicle-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-        }
-        
-        .vehicle-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-
-        .vehicle-card h3 {
-            margin: 10px 0;
-            color: #ff4500;
-        }
-
-        .vehicle-card p {
-            margin: 5px 0;
-        }
-
-        .vehicle-card form {
-            margin-top: 15px;
-        }
-
-        .vehicle-card button {
-            background: #ff4500;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transform: scale(1.1);
-        }
-        
-
-        .vehicle-card button:hover {
-            background: #ff0000;
-        }
-
-        .message {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 10px;
-            background: #333;
-            border-radius: 5px;
-            color: #ff4500;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: linear-gradient(135deg, #2a2a2a, #1c1c1c);
+        color: #fff;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+    .vehicle-card {
+        background: #222;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid #444;
+        text-align: center;
+    }
+    .vehicle-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    }
+    .vehicle-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+    .vehicle-card h3 {
+        margin: 10px 0;
+        color: #ff4500;
+    }
+    .vehicle-card p {
+        margin: 5px 0;
+    }
+    .vehicle-card form {
+        margin-top: 15px;
+    }
+    .vehicle-card button {
+        background: #ff4500;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transform: scale(1.1);
+    }
+    .vehicle-card button:hover {
+        background: #ff0000;
+    }
+    .message {
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 10px;
+        background: #333;
+        border-radius: 5px;
+        color: #ff4500;
+    }
     </style>
 </head>
 <body>
