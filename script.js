@@ -1,4 +1,4 @@
-
+//PAS UTILE C'EST UN SUPPORT
 document.getElementById('apply-filters').addEventListener('click', async () => {
     const speed = document.getElementById('filter-speed').value;
     const price = document.getElementById('filter-price').value;
