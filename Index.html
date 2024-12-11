@@ -19,7 +19,9 @@
             text-align: center;
             border-bottom: 3px solid #ff0000; 
         }
-
+        header img {
+            max-height: 100px;
+        }
         nav {
             text-align: center;
             margin: 20px 0;
@@ -37,8 +39,8 @@
         .container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 50px;
+            gap: 10px;
+            padding: 20px;
         }
         .item-card {
             background-color: #333;
@@ -93,56 +95,62 @@
             color: #fff;
             font-size: 0.9rem;
         }
-        
-        
     </style>
 </head>
-
 <body>
     <header>
-        <img src="images/gta_logo.jpg">
+        <img src="images/gta_logo.jpg" alt="GTA Shop Logo">
     </header>
 
     <section class="container">
-        
+        <!-- Carte pour les voitures -->
         <div class="item-card">
-            <img src="images/vagner.jpg" alt="Vehicules">
+            <img src="images/vagner.jpg" alt="Voitures">
             <div class="info">
                 <h3>Voitures de Sport</h3>
-                <p>Voitures à haute vitesse.</p>
                 <a href="voitures.html"><button>Consulter</button></a>
             </div>
         </div>
 
+        <!-- Carte pour les avions -->
         <div class="item-card">
             <img src="images/luxor-deluxe.jpg" alt="Avions">
             <div class="info">
                 <h3>Avions deluxe</h3>
-                <p>Les avions les plus performants de la planète.</p>
                 <a href="avions.html"><button>Consulter</button></a>
             </div>
         </div>
 
+        <!-- Carte pour les bateaux -->
         <div class="item-card">
             <img src="images/kosatka.jpg" alt="Bateaux">
             <div class="info">
                 <h3>Bateaux</h3>
-                <p>Les meilleurs bateaux du marché.</p>
                 <a href="bateaux.html"><button>Consulter</button></a>
             </div>
         </div>
+
+        <!-- Carte pour ajouter un véhicule -->
         <div class="item-card">
             <img src="images/nouveau.jpg" alt="Ajouter un véhicule">
             <div class="info">
                 <h3>Ajouter un véhicule</h3>
-                <p>Ajoutez un nouveau véhicule à votre catalogue.</p>
                 <a href="ajouter_vehicule.php"><button>Ajouter</button></a>
+            </div>
+        </div>
+
+        <!-- Carte pour supprimer un véhicule -->
+        <div class="item-card">
+            <img src="images/supprimer.jpg" alt="Supprimer un véhicule">
+            <div class="info">
+                <h3>Supprimer un véhicule</h3>
+                <a href="supprimer_vehicule.php"><button>Supprimer</button></a>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 GTA Shop.Hugo Troussel / Léo Lesage</p>
+        <p>&copy; 2024 GTA Shop. Hugo Troussel / Léo Lesage</p>
     </footer>
 </body>
 </html>
