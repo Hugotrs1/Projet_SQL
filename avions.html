@@ -6,24 +6,25 @@
     <title>Avions - GTA Shop</title>
     <link rel="icon" type="image/jpg" href="images/logo GTA.jpg">
     <style>
-    body {
+        body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
         background: linear-gradient(135deg, #2a2a2a, #1c1c1c);
         color: #fff;
     }
-    header {
-        text-align: center;
-        padding: 20px;
+    header,footer {
         background-color: #000;
-        border-bottom: 3px solid #ff0000;
+        padding: 20px;
+        text-align: center;
     }
+
     .filters {
         font-weight: bold;
         margin: 20px;
         text-align: center;
     }
+
     .filters select {
         font-weight: bold;
         padding: 10px;
@@ -33,23 +34,27 @@
         color: #fff;
         border-radius: 5px;
     }
+
     .filters button {
         padding: 10px 20px;
-        background: #ffffff;
-        border: none;
+        background: #ffffff;  
         color: rgb(0, 0, 0);
-        border-radius: 5px;
-        cursor: pointer;
+        font-weight: bold;
+        border-radius: 10px;
+        border: none;
     }
+
     .filters button:hover {
         background: #cc0000;
+        color: white;
     }
     .container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
-        padding: 20px;
+        padding: 40px;
     }
+
     .item-card {
         background-color: #333;
         border-radius: 10px;
@@ -57,10 +62,10 @@
         transition: transform 0.3s, box-shadow 0.3s;
         max-width: 300px; 
         margin: 10px auto; 
-        display: inline-block; 
+        display: inline-block;
     }
     .item-card:hover {
-        transform: scale(1.05);
+        transform: scale(1.1);
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
     }
     .item-card img {
@@ -78,17 +83,11 @@
         border: none;
         color: rgb(0, 0, 0);
         border-radius: 5px;
-        cursor: pointer;
+        font-weight: bold ;
         transition: background-color 0.3s, transform 0.3s;
     }
     .item-card button:hover {
         transform: scale(1.1);
-    }
-    footer {
-        text-align: center;
-        padding: 20px;
-        background-color: #000;
-        border-top: 3px solid #ff0000;
     }
     footer p {
         margin: 0;
