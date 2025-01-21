@@ -26,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Exécution de la requête avec les données récupérées
     $stmt->execute([$type, $name, $vitesse, $prix, $capacite, $annee, $categorie, $image]);
 
-    // Message de confirmation affiché après l'ajout du véhicule
     echo "<p>Véhicule ajouté avec succès !</p>";
 }
 ?>
@@ -102,11 +101,9 @@ form button:hover {
 <body>
     <h1 style="text-align:center;">Ajouter un véhicule</h1>
     <form action="" method="post" enctype="multipart/form-data">
-        <!-- Champ pour le nom du véhicule -->
         <label>Nom :</label>
         <input type="text" name="name" required>
 
-        <!-- Sélection du type de véhicule -->
         <label>Type :</label>
         <select name="type" required>
             <option value="Voiture">Voiture</option>
@@ -114,23 +111,18 @@ form button:hover {
             <option value="Bateau">Bateau</option>
         </select>
 
-        <!-- Champ pour la vitesse maximale -->
         <label>Vitesse maximale :</label>
         <input type="number" name="vitesse" required>
 
-        <!-- Champ pour le prix -->
         <label>Prix :</label>
         <input type="number" name="prix" required>
-
-        <!-- Champ pour la capacité -->
+        
         <label>Capacité :</label>
         <input type="number" name="capacite" required>
 
-        <!-- Champ pour l'année de sortie -->
         <label>Année de sortie :</label>
         <input type="number" name="annee" required>
 
-        <!-- Sélection de la catégorie du véhicule -->
         <label>Catégorie :</label>
         <select name="categorie" required>
             <option value="Avion de chasse">Avion de chasse</option>
@@ -145,11 +137,9 @@ form button:hover {
             <option value="Ultralégères">Ultralégères</option>
         </select>
 
-        <!-- Champ pour télécharger l'image -->
         <label>Image :</label>
         <input type="file" name="image" accept="image/*" required>
 
-        <!-- Bouton pour soumettre le formulaire -->
         <button type="submit">Ajouter</button>
     </form>
 </body>
