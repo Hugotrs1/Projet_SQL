@@ -71,13 +71,13 @@ $vehicles = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupération de tous les vé
         border-radius: 10px;
         border: 2px solid #444;
         text-align: center;
-        transition: transform 0.3s, box-shadow 0.3s; /* Animation lors du survol */
+        transition: transform 0.3s, box-shadow 0.3s; 
     }
 
-    /* Effet au survol d'une carte de véhicule */
+    
     .vehicle-card:hover {
-        transform: scale(1.05); /* Agrandissement de la carte */
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); /* Ombre portée */
+        transform: scale(1.05); 
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); 
     }
 
     /* Style de l'image du véhicule */
@@ -92,7 +92,7 @@ $vehicles = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupération de tous les vé
     /* Style du titre du véhicule */
     .vehicle-card h3 {
         margin: 10px 0;
-        color: #ff4500; /* Couleur orange */
+        color: #ffffff;
     }
 
     /* Style des paragraphes d'information sur le véhicule */
@@ -129,7 +129,7 @@ $vehicles = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupération de tous les vé
         padding: 10px;
         background: #333;
         border-radius: 5px;
-        color: #ff4500; /* Couleur orange */
+        color: #ff4500; 
     }
     </style>
 </head>
@@ -155,7 +155,6 @@ $vehicles = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupération de tous les vé
                 <p>Année : <?= htmlspecialchars($vehicle['annee']) ?></p>
                 <p>Catégorie : <?= htmlspecialchars($vehicle['categorie']) ?></p>
 
-                <!-- Formulaire pour supprimer un véhicule -->
                 <form action="" method="post">
                     <input type="hidden" name="vehicle_id" value="<?= htmlspecialchars($vehicle['id']) ?>">
                     <button type="submit">Supprimer</button>
